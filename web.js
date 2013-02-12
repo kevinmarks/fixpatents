@@ -2,7 +2,11 @@ var express = require('express');
 
 var app = express.createServer(express.logger());
 
-app.get('/', function(request, response) {
+app.configure(function(){
+  app.use(express.static(__dirname + '/web'));
+});
+
+app.get('/fix', function(request, response) {
   response.send('Fix Patents!');
 });
 
